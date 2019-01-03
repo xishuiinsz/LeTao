@@ -53,3 +53,6 @@ node_modules
 # 我忽略了数据连接的文件
 
 数据库连接.txt
+
+# 过滤根目录下的html文件
+/*.html
