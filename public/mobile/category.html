@@ -39,6 +39,8 @@
                 <div class="mui-scroll">
                     <!--这里放置真实显示的DOM内容-->
                     <ul>
+                        <li :class="category.id == categoryID?'active':''" v-for="(category,index) in categoryLeft"
+                            :key="category.id" :data-id="category.id"><a href="javascript:;" @click.prevent="clickCategory($event)">{{category.categoryName}}</a></li>
                     </ul>
                 </div>
             </div>
@@ -51,7 +53,39 @@
                     <!--这里放置真实显示的DOM内容-->
                     <div class="mui-row">
                         <!-- 判断当前的rows数组的长度如大于0 表示有数据就要遍历 否则就不遍历显示没有数据 -->
+                        <div  class="mui-col-xs-4" v-for="(secondCategory,index) in categoryRight" :key="index">
+                            <a href="#">
+                                <img :src="secondCategory.brandLogo" alt="">
+                                <p>{{secondCategory.brandName}}</p>
+                            </a>
+
+                        </div>
+                        <p v-if="!categoryRight.length">此分类暂无数据</p>
                     </div>
+                </div>
+            </div>
+        </div>
+        <!-- 遮罩层 -->
+        <div v-show="isShowMask" class="mask">
+            <!-- 加载中效果的结构 -->
+            <div class="spinner">
+                <div class="spinner-container container1">
+                    <div class="circle1"></div>
+                    <div class="circle2"></div>
+                    <div class="circle3"></div>
+                    <div class="circle4"></div>
+                </div>
+                <div class="spinner-container container2">
+                    <div class="circle1"></div>
+                    <div class="circle2"></div>
+                    <div class="circle3"></div>
+                    <div class="circle4"></div>
+                </div>
+                <div class="spinner-container container3">
+                    <div class="circle1"></div>
+                    <div class="circle2"></div>
+                    <div class="circle3"></div>
+                    <div class="circle4"></div>
                 </div>
             </div>
         </div>
@@ -74,66 +108,63 @@
             </div>
         </div>
     </footer>
-    <!-- 遮罩层 -->
-    <div class="mask">
-        <!-- 加载中效果的结构 -->
-        <div class="spinner">
-            <div class="spinner-container container1">
-                <div class="circle1"></div>
-                <div class="circle2"></div>
-                <div class="circle3"></div>
-                <div class="circle4"></div>
-            </div>
-            <div class="spinner-container container2">
-                <div class="circle1"></div>
-                <div class="circle2"></div>
-                <div class="circle3"></div>
-                <div class="circle4"></div>
-            </div>
-            <div class="spinner-container container3">
-                <div class="circle1"></div>
-                <div class="circle2"></div>
-                <div class="circle3"></div>
-                <div class="circle4"></div>
-            </div>
-        </div>
-    </div>
+
     <!-- 创建一级分类的模板 模板id一般带一个后缀tpl tmp等表示是一个模板id-->
-    <script id="topCategoryTpl" type="text/html">
-        <!-- for(var i = 0 ; i < list[i].length;i++){
-            list[i]
-        }
-        模板里面的each 遍历数组 数组名叫做什么 就遍历什么
-        现在后台返回的数据已经是一个数组 而且数组的名字叫rows 
-        所以each rows -->
-        <!-- rows是对象（后台返回的data对象）里面的属性rows 模板里面 都是直接使用对象里面的属性 -->
-        {{each rows value index}}
-        <!-- {{index == 0 ? 'active' : ''}} 如果索引为0 就设置active类名 -->
-        <!-- 点击的时候需要拿到当前的点击a的data-id属性的值 当有些数据需要在JS去获取的时候 可以在标准中绑定-->
-        <li class="{{index == 0 ? 'active' : ''}}"><a href="#" data-id="{{value.id}}">{{value.categoryName}}</a></li>
-        {{/each}}
-    </script>
-    <script id="secondCategoryTpl" type="text/html">
-        <!-- 判断rows数组的长度 大于0 就进行遍历  小于0就提示没有数据了 -->
-        {{if rows.length > 0}} {{each rows value}}
-        <div class="mui-col-xs-4">
-            <a href="#">
-                <img src="{{value.brandLogo}}" alt="">
-                <p>{{value.brandName}}</p>
-            </a>
-        </div>
-        {{/each}} {{else}}
-        <p>没有品牌了！请购买其他品牌</p>
-        {{/if}}
-    </script>
+
     <!-- 1. 引入mui的JS -->
     <script src="lib/mui/js/mui.js"></script>
     <!-- 2. 引入模板引擎的 注意引入template-web.js 最新版最简洁的  -->
     <script src="lib/artTemplate/template-web.js"></script>
     <!-- 3. 引入zepto的JS ajax dom操作的Js库 -->
     <script src="lib/zepto/zepto.min.js"></script>
-    <!-- 4. 引入分类的JS文件 -->
-    <script src="js/category.js"></script>
+    <!-- 引入Vue -->
+    <script src="lib/vue.js"></script>
+    <!-- 4. 引入Vue推荐的ajax模块 -->
+    <script src="lib/axios.js"></script>
 </body>
+<script>
+    let vm = new Vue({
+        el: '#main',
+        data: {
+            categoryLeft: [],   //左侧一类分类数据
+            categoryRight: [],  //右侧二类分类数据
+            isShowMask: false,  //是否显示遮罩层
+            categoryID: 1,      //初始化显示一类分类的id
+        },
+        // [计算]属性,无缓存功能
+        methods: {
+            // 获取一级分类数据
+            getCategoryLeft: function () {
+                this.isShowMask = true;
+                axios('/category/queryTopCategory').then(response => {
+                    this.categoryLeft = response.data.rows;
+                    this.isShowMask = false;
+                })
+            },
+            // 获取二级分类数据,需要传递一级分类的id
+            getCategoryRight: function (id) {
+                this.isShowMask = true;
+                axios('/category/querySecondCategory?id=' + id).then(response => {
+                    this.categoryRight = response.data.rows;
+                    this.isShowMask = false;
+                })
+            },
+
+            // 单击一级分类事件
+            clickCategory: function (e) {
+                let id = e.target.parentElement.dataset['id'];
+                this.categoryID = id;
+                // console.log(e.target.parentElement.dataset['id']);
+                e.target.parentElement.classList.add('active');
+                this.getCategoryRight(id)
+            }
+        },
+        // Vue生命周期钩子函数,此时vm实例的data,methods等已经初始完成
+        created() {
+            this.getCategoryLeft();
+            this.getCategoryRight(this.categoryID)
+        },
+    })
+</script>
 
 </html>

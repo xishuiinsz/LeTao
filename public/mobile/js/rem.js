@@ -14,8 +14,8 @@ function setNowFontSize() {
     var maxFontSize = 200;
     var nowWidth = document.documentElement.offsetWidth;
     var nowFontSize = nowWidth / StandardWidth * StandardFontSize;
-    console.log(nowWidth);
-    console.log(nowFontSize);
+    // console.log(nowWidth);
+    // console.log(nowFontSize);
     // 做最大限制可以在JS判断字体大小 超过200 默认为200
     if(nowFontSize > maxFontSize){
         nowFontSize = maxFontSize;
