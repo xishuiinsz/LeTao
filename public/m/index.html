@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- 引入rem.js适配 -->
+    <script src="./js/rem.js"></script>
+    <!-- 引入站点图标 -->
+    <link rel="icon" href="./images/favicon.ico">
+    <!-- 引入MUI框架CSS -->
+    <link rel="stylesheet" href="./lib/mui/css/mui.css">
+    <!-- 引入FontAwasome字体图标库 -->
+    <link rel="stylesheet" href="./lib/fontAwesome/css/font-awesome.css">
+    <!-- 主页less文件 -->
+    <link rel="stylesheet/less" href="./less/index.less">
+    <!-- less样式解释器 -->
+    <script src="./lib/less/less.js"></script>
+    <title>练习乐淘移动端主页面</title>
+</head>
+
+<body>
+    <!-- 头部区域 -->
+    <header id="header">
+        <div class="left">
+            <img src="./images/logo_m.jpg" alt="">
+        </div>
+        <div class="middle">
+            <h4>
+                乐淘移动端主页面
+            </h4>
+        </div>
+        <div class="right">
+            <a href="search.html"><i class="fa fa-search" aria-hidden="true"></i></a>
+        </div>
+
+    </header>
+
+
+    <!-- 主体区域 -->
+    <main id="main">
+        <!-- 轮播图区域 -->
+        <section class="slides">
+            <div class="mui-slider">
+                <div class="mui-slider-group mui-slider-loop">
+                    <!--支持循环，需要重复图片节点-->
+                    <div class="mui-slider-item mui-slider-item-duplicate"><a href="#"><img src="images/banner4.png" /></a></div>
+                    <div class="mui-slider-item"><a href="#"><img src="images/banner1.png" /></a></div>
+                    <div class="mui-slider-item"><a href="#"><img src="images/banner2.png" /></a></div>
+                    <div class="mui-slider-item"><a href="#"><img src="images/banner3.png" /></a></div>
+                    <div class="mui-slider-item"><a href="#"><img src="images/banner4.png" /></a></div>
+                    <!--支持循环，需要重复图片节点-->
+                    <div class="mui-slider-item mui-slider-item-duplicate"><a href="#"><img src="images/banner1.png" /></a></div>
+                </div>
+                <!-- 轮播图指示器 -->
+                <div class="mui-slider-indicator">
+                    <div class="mui-indicator mui-active"></div>
+                    <div class="mui-indicator"></div>
+                    <div class="mui-indicator"></div>
+                    <div class="mui-indicator"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 6宫格导航 -->
+        <nav class="nav">
+            <div class="mui-row">
+                <div class="mui-col-xs-4"><a href="#"><img src="./images/nav1.png" alt=""></a></div>
+                <div class="mui-col-xs-4"><a href="#"><img src="./images/nav2.png" alt=""></a></div>
+                <div class="mui-col-xs-4"><a href="#"><img src="./images/nav3.png" alt=""></a></div>
+                <div class="mui-col-xs-4"><a href="#"><img src="./images/nav4.png" alt=""></a></div>
+                <div class="mui-col-xs-4"><a href="#"><img src="./images/nav5.png" alt=""></a></div>
+                <div class="mui-col-xs-4"><a href="#"><img src="./images/nav6.png" alt=""></a></div>
+            </div>
+        </nav>
+
+        <!-- 促销专区 -->
+        <section class="promotion">
+            <div class="mui-row">
+                <div class="mui-col-xs-8">
+                    <div class="top">
+                        <a href="#"> <img src="./images/active1.png"></a>
+                    </div>
+                    <div class="bottom">
+                        <a href="#"> <img src="./images/active4.png"></a>
+                    </div>
+                </div>
+                <div class="mui-col-xs-4">
+                    <a href="#"> <img src="./images/active3.png"></a>
+                </div>
+            </div>
+        </section>
+
+        <!-- 运动生活专区 -->
+        <section class="life-sport">
+            <div class="title">
+                <div class="mui-row">
+                    <div class="mui-col-xs-4"></div>
+                    <div class="mui-col-xs-4">
+                        <h4>品牌专区</h4>
+                        <p>The new Brands</p>
+                    </div>
+                    <div class="mui-col-xs-4"></div>
+                </div>
+            </div>
+            <div class="content"></div>
+        </section>
+
+        <!-- 女性专区 -->
+        <section class="women"></section>
+
+        <!-- 男性专区 -->
+        <section class="men"></section>
+
+
+
+        <footer id="footer">
+
+        </footer>
+
+    </main>
+
+
+    <!-- 页脚区域 -->
+    <footer id="footer"></footer>
+
+
+
+    <!-- 引入MUI框架JS -->
+    <script src="./lib/mui/js/mui.js"></script>
+    <!-- 引入zepto移动端框架 -->
+    <script src="./lib/zepto/zepto.min.js"></script>
+    <!-- 引入模板引擎 -->
+    <script src="./lib/artTemplate/template-web.js"></script>
+    <!-- 引入主页js文件 -->
+    <script src="./js/index.js"></script>
+</body>
+
+</html>

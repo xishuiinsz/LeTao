@@ -1,0 +1,100 @@
+// 引入公共样式
+@import './base.less';
+
+#header {
+    width: 100%;
+    height: 0.45rem;
+    display: flex;
+    background-color: @main-color;
+    color: #fff;
+    .left {
+
+        width: 0.45rem;
+        height: 0.45rem;
+        img {
+            display: block;
+            width: 100%;
+            height: 100%;
+        }
+    }
+
+    .middle {
+        flex: 1;
+        text-align: center;
+
+        h4 {
+            margin: 0;
+            padding: 0;
+            line-height: 0.45rem;
+            font-weight: normal;
+        }
+    }
+
+    .right {
+        width: 0.45rem;
+        height: 0.45rem;
+        text-align: center;
+        line-height: 0.45rem;
+        .fa {
+            color: #fff;
+            font-size: 0.18rem;
+        }
+    }
+
+
+
+}
+
+#main {
+    
+    // 6宫格导航区域样式
+    .nav {
+        padding: 0.1rem;
+        a {
+            display: block;
+            img {
+                width: 100%;
+                height: 100%;
+            }
+        }
+    }
+
+    //促销区域样式
+    .promotion {
+        padding:0 0.1rem;
+        a {
+            display: block;
+            img {
+                width: 100%;
+                height: 100%;
+            }
+        }
+    }
+
+    .life-sport {
+        .title {
+            color:#fff;
+            background-color: #000000;
+            text-align: center;
+            padding: 0.05rem 0;
+            h4 {
+                margin: 0;
+                padding: 0 .1rem;
+                text-align: justify;
+                text-align-last: justify;
+            }
+            p {
+                margin: 0;
+                padding: 0;
+                line-height: .14rem;
+            }
+        }
+    }
+
+
+
+}
+
+#footer {
+    margin-bottom: 2.2rem;
+}

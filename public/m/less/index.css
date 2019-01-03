@@ -1,0 +1,80 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+#header {
+  width: 100%;
+  height: 0.45rem;
+  display: flex;
+  background-color: #006699;
+  color: #fff;
+}
+#header .left {
+  width: 0.45rem;
+  height: 0.45rem;
+}
+#header .left img {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+#header .middle {
+  flex: 1;
+  text-align: center;
+}
+#header .middle h4 {
+  margin: 0;
+  padding: 0;
+  line-height: 0.45rem;
+  font-weight: normal;
+}
+#header .right {
+  width: 0.45rem;
+  height: 0.45rem;
+  text-align: center;
+  line-height: 0.45rem;
+}
+#header .right .fa {
+  color: #fff;
+  font-size: 0.18rem;
+}
+#main .nav {
+  padding: 0.1rem;
+}
+#main .nav a {
+  display: block;
+}
+#main .nav a img {
+  width: 100%;
+  height: 100%;
+}
+#main .promotion {
+  padding: 0 0.1rem;
+}
+#main .promotion a {
+  display: block;
+}
+#main .promotion a img {
+  width: 100%;
+  height: 100%;
+}
+#main .life-sport .title {
+  color: #fff;
+  background-color: #000000;
+  text-align: center;
+  padding: 0.05rem 0;
+}
+#main .life-sport .title h4 {
+  margin: 0;
+  padding: 0 .1rem;
+  text-align: justify;
+  text-align-last: justify;
+}
+#main .life-sport .title p {
+  margin: 0;
+  padding: 0;
+  line-height: .14rem;
+}
+#footer {
+  margin-bottom: 2.2rem;
+}
