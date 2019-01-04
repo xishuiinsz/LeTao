@@ -36,7 +36,7 @@
         <!-- 搜索表单 -->
         <div class="search-form">
             <form action="#">
-                <input type="search" placeholder="请输入要搜索商品" class="input-search" v-model="txtInput" :class="{'input-warning':isInputWarning}">
+                <input type="search" ref="txtInput" placeholder="请输入要搜索商品" class="input-search" v-model="txtInput" :class="{'input-warning':isInputWarning}">
                 <button type="button" class="mui-btn mui-btn-primary btn-search" @click='search'>搜索</button>
             </form>
         </div>
@@ -115,6 +115,7 @@
                     // 当用户提交空搜索时,使用红色边框提示用户,持续3秒钟.
                     this.isInputWarning = true;
                     setTimeout(()=>this.isInputWarning = false,3000);
+                    this.$refs.txtInput.focus();
                 }
             },
 
@@ -135,6 +136,10 @@
             if (localStorage.getItem('searchHistory')) {
                 this.searchHistory = JSON.parse(localStorage.getItem('searchHistory'));
             }
+        },
+        mounted() {
+            // vm实例数据渲染至dom树后,使用搜索框获得焦点.
+            this.$refs.txtInput.focus();
         },
         // 数据监听
         watch: {
