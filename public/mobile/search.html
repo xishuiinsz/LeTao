@@ -17,6 +17,11 @@
     <script src="lib/less/less.js"></script>
     <!-- 5. 在页面前引入rem.js 等页面加载出来之前生效样式马上执行 -->
     <script src="js/rem.js"></script>
+    <style>
+        .input-warning {
+            border: 1px solid red !important;
+        }
+    </style>
 </head>
 
 <body>
@@ -31,7 +36,7 @@
         <!-- 搜索表单 -->
         <div class="search-form">
             <form action="#">
-                <input type="search" placeholder="请输入要搜索商品" class="input-search" v-model="txtInput">
+                <input type="search" placeholder="请输入要搜索商品" class="input-search" v-model="txtInput" :class="{'input-warning':isInputWarning}">
                 <button type="button" class="mui-btn mui-btn-primary btn-search" @click='search'>搜索</button>
             </form>
         </div>
@@ -89,6 +94,7 @@
         data: {
             searchHistory: [],  //搜索记录数据初始化
             txtInput: '',   //与文本框进行双向绑定
+            isInputWarning:false,   //初始化输入框的警示边框
         },
         computed: {
             getSearchWord: function () {
@@ -105,6 +111,10 @@
                     this.searchHistory.unshift(this.getSearchWord);
                     // localStorage.setItem('searchHistory',JSON.stringify(this.searchHistory));
                     this.txtInput = '';
+                }else{
+                    // 当用户提交空搜索时,使用红色边框提示用户,持续3秒钟.
+                    this.isInputWarning = true;
+                    setTimeout(()=>this.isInputWarning = false,3000);
                 }
             },
 
