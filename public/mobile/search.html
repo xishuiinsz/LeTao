@@ -92,8 +92,8 @@
     let vm = new Vue({
         el: '#main',
         data: {
-            searchHistory: [],  //搜索记录数据初始化
-            txtInput: '',   //与文本框进行双向绑定
+            searchHistory: [],        //搜索记录数据初始化
+            txtInput: '',            //与文本框进行双向绑定
             isInputWarning:false,   //初始化输入框的警示边框
         },
         computed: {
@@ -103,10 +103,16 @@
             // 单击[搜索]按钮事件
             search: function () {
                 if (this.txtInput.trim()) {
+<<<<<<< HEAD
                     let strTemp = this.txtInput.trim();
                     if (this.searchHistory.indexOf(strTemp) != -1)
                         this.searchHistory.splice(this.searchHistory.indexOf(strTemp), 1);
                     this.searchHistory.unshift(strTemp);
+=======
+                    if (this.searchHistory.indexOf(this.getSearchWord) != -1)
+                        this.searchHistory.splice(this.searchHistory.indexOf(this.getSearchWord), 1);
+                    this.searchHistory.unshift(this.getSearchWord);
+>>>>>>> f357ef90da83cea611f64adbb1a244afcd5cc147
                     // localStorage.setItem('searchHistory',JSON.stringify(this.searchHistory));
                     this.txtInput = '';
                     location = 'productlist.html';
@@ -118,7 +124,7 @@
                 }
             },
 
-            // 删除单条历史记录
+            // 单击[删除]按钮事件
             deleteHistory: function (idx) {
                 this.searchHistory.splice(idx, 1);
             },
