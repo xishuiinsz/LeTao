@@ -97,18 +97,16 @@
             isInputWarning:false,   //初始化输入框的警示边框
         },
         computed: {
-            getSearchWord: function () {
-                // 去掉输入框左右两侧的空格
-                return this.txtInput.replace(/(^\s*)|(\s*$)/g, "");
-            }
+
         },
         methods: {
             // 单击[搜索]按钮事件
             search: function () {
-                if (this.getSearchWord) {
-                    if (this.searchHistory.indexOf(this.getSearchWord) != -1)
-                        this.searchHistory.splice(this.searchHistory.indexOf(this.getSearchWord), 1);
-                    this.searchHistory.unshift(this.getSearchWord);
+                if (this.txtInput.trim()) {
+                    let strTemp = this.txtInput.trim();
+                    if (this.searchHistory.indexOf(strTemp) != -1)
+                        this.searchHistory.splice(this.searchHistory.indexOf(strTemp), 1);
+                    this.searchHistory.unshift(strTemp);
                     // localStorage.setItem('searchHistory',JSON.stringify(this.searchHistory));
                     this.txtInput = '';
                 }else{
