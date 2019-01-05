@@ -103,16 +103,10 @@
             // 单击[搜索]按钮事件
             search: function () {
                 if (this.txtInput.trim()) {
-<<<<<<< HEAD
                     let strTemp = this.txtInput.trim();
                     if (this.searchHistory.indexOf(strTemp) != -1)
                         this.searchHistory.splice(this.searchHistory.indexOf(strTemp), 1);
                     this.searchHistory.unshift(strTemp);
-=======
-                    if (this.searchHistory.indexOf(this.getSearchWord) != -1)
-                        this.searchHistory.splice(this.searchHistory.indexOf(this.getSearchWord), 1);
-                    this.searchHistory.unshift(this.getSearchWord);
->>>>>>> f357ef90da83cea611f64adbb1a244afcd5cc147
                     // localStorage.setItem('searchHistory',JSON.stringify(this.searchHistory));
                     this.txtInput = '';
                     location = 'productlist.html';
