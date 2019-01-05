@@ -92,20 +92,17 @@
     let vm = new Vue({
         el: '#main',
         data: {
-            searchHistory: [],  //搜索记录数据初始化
-            txtInput: '',   //与文本框进行双向绑定
+            searchHistory: [],        //搜索记录数据初始化
+            txtInput: '',            //与文本框进行双向绑定
             isInputWarning:false,   //初始化输入框的警示边框
         },
         computed: {
-            getSearchWord: function () {
-                // 去掉输入框左右两侧的空格
-                return this.txtInput.replace(/(^\s*)|(\s*$)/g, "");
-            }
+
         },
         methods: {
             // 单击[搜索]按钮事件
             search: function () {
-                if (this.getSearchWord) {
+                if (this.txtInput.trim()) {
                     if (this.searchHistory.indexOf(this.getSearchWord) != -1)
                         this.searchHistory.splice(this.searchHistory.indexOf(this.getSearchWord), 1);
                     this.searchHistory.unshift(this.getSearchWord);
@@ -119,7 +116,7 @@
                 }
             },
 
-            // 删除单条历史记录
+            // 单击[删除]按钮事件
             deleteHistory: function (idx) {
                 this.searchHistory.splice(idx, 1);
             },
