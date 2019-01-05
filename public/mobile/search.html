@@ -109,7 +109,7 @@
                     this.searchHistory.unshift(strTemp);
                     // localStorage.setItem('searchHistory',JSON.stringify(this.searchHistory));
                     this.txtInput = '';
-                    location = `productlist.html?keyword=${strTemp}&${new Date().getTime()}`;
+                    location = `productlist.html?keyword=${strTemp}&cache=${new Date().getTime()}`;
                 }else{
                     // 当用户提交空搜索时,使用红色边框提示用户,持续3秒钟.
                     this.isInputWarning = true;
